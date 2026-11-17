@@ -22,6 +22,7 @@ prebuilt_etc {
 
 cc_library_headers {
     name: "libteecl_headers",
+    vendor_available: true,
     export_include_dirs: ["."],
 }
 
