@@ -23,7 +23,6 @@ import com.android.settingslib.widget.SettingsBasePreferenceFragment;
 
 import org.lineageos.settings.device.R;
 
-import org.lineageos.internal.util.FileUtils;
 
 public class AdvancedDisplayFragment extends SettingsBasePreferenceFragment {
     private mDNIeScenario mmDNIeScenario;
@@ -37,10 +36,10 @@ public class AdvancedDisplayFragment extends SettingsBasePreferenceFragment {
         /* mDNIe */
         mmDNIeScenario = (mDNIeScenario) findPreference(Constants.KEY_MDNIE_SCENARIO);
         mmDNIeScenario.setEnabled(
-                FileUtils.isFileWritable(res.getString(R.string.mdnie_scenario_sysfs_file)));
+                SysfsUtils.isFileWritable(res.getString(R.string.mdnie_scenario_sysfs_file)));
 
         mmDNIeAccessibility = (mDNIeAccessibility) findPreference(Constants.KEY_MDNIE_ACCESSIBILITY);
         mmDNIeAccessibility.setEnabled(
-                FileUtils.isFileWritable(res.getString(R.string.mdnie_accessibility_sysfs_file)));
+                SysfsUtils.isFileWritable(res.getString(R.string.mdnie_accessibility_sysfs_file)));
     }
 }

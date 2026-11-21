@@ -25,7 +25,6 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 
-import org.lineageos.internal.util.FileUtils;
 
 public class mDNIeScenario extends ListPreference implements Preference.OnPreferenceChangeListener {
 
@@ -43,16 +42,16 @@ public class mDNIeScenario extends ListPreference implements Preference.OnPrefer
      */
     public static void restore(Context context) {
         FILE = context.getResources().getString(R.string.mdnie_scenario_sysfs_file);
-        if (!FileUtils.isFileWritable(FILE)) {
+        if (!SysfsUtils.isFileWritable(FILE)) {
             return;
         }
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        FileUtils.writeLine(FILE, sharedPrefs.getString(Constants.KEY_MDNIE_SCENARIO, "0"));
+        SysfsUtils.writeLine(FILE, sharedPrefs.getString(Constants.KEY_MDNIE_SCENARIO, "0"));
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        FileUtils.writeLine(FILE, (String) newValue);
+        SysfsUtils.writeLine(FILE, (String) newValue);
         return true;
     }
 }
